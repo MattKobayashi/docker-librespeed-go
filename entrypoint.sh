@@ -2,11 +2,11 @@
 set -xe
 
 # Select server mode
-cp /assets/example-singleServer-full.html /assets/index.html
+cp assets/example-singleServer-full.html assets/index.html
 
 # Set title
 if [ ! -z "$TITLE" ]; then
-  sed -i "s/LibreSpeed Example/$TITLE/g" /assets/index.html
+  sed -i "s/LibreSpeed Example/$TITLE/g" ./assets/index.html
 fi
 
 # Set bind address and port
@@ -47,8 +47,8 @@ echo -e "database_username=\"\"\n" >> settings.toml
 echo -e "database_password=\"\"\n" >> settings.toml
 
 # Set BoltDB location
-echo -e "database_file=\"/data/speedtest.db\"\n" >> settings.toml
+echo -e "database_file=\"/opt/librespeed/data/speedtest.db\"\n" >> settings.toml
 
 # Run speedtest
 echo "settings.toml generated, starting LibreSpeed..."
-/speedtest
+./speedtest
