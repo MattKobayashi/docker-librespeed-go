@@ -1,4 +1,4 @@
-FROM golang:1.14.2-alpine3.11 AS buildenv
+FROM golang:1.14.4-alpine3.12 AS buildenv
 
 # Copy files and compile
 WORKDIR /librespeed
@@ -9,7 +9,7 @@ RUN apk add --no-cache tar \
     && CGO_ENABLED=0 go build -ldflags "-w -s" -trimpath -o speedtest main.go
 
 # Copy compiled binary and supporting files to main image
-FROM alpine:3.11
+FROM alpine:3.12
 WORKDIR /opt/librespeed
 RUN adduser --system librespeed \
     && mkdir assets/ \
