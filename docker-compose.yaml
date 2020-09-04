@@ -4,7 +4,6 @@ services:
     ## LibreSpeed ##
     librespeed:
         container_name: librespeed
-        hostname: librespeed
         build: 
             context: .
             dockerfile: Dockerfile
