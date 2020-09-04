@@ -1,8 +1,8 @@
 #!/bin/sh
 set -xe
 
-# Select server mode
-cp assets/example-singleServer-full.html assets/index.html
+# Select index.html page
+cp assets/example-singleServer-progressBar.html assets/index.html
 
 # Set title
 if [ ! -z "$TITLE" ]; then
