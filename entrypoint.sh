@@ -13,6 +13,11 @@ fi
 echo -e "bind_address=\"$BINDADDR\"\n" > settings.toml
 echo -e "listen_port=\"$LISTENPORT\"\n" >> settings.toml
 
+# Set PROXY protocol port
+if [ ! -z "$PROXYPROTOPORT" ]; then
+  echo -e "proxyprotocol_port=\"$PROXYPROTOPORT\"\n" >> settings.toml
+fi
+
 # Set server location manually if desired
 if [ ! -z "$SERVERLAT" ]; then
   echo -e "server_lat=\"$SERVERLAT\"\n" >> settings.toml
