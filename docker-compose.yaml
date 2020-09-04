@@ -1,0 +1,24 @@
+version: "2.4"
+services:
+
+    ## LibreSpeed ##
+    librespeed:
+        container_name: librespeed
+        hostname: librespeed
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        image: librespeed
+        restart: unless-stopped
+        ports: 
+            - "8989:8989/tcp"
+        volumes: 
+            - type: volume
+              source: librespeed_data
+              target: /opt/librespeed/data
+
+volumes: 
+
+    ## Base Volumes ##
+    librespeed_data:
+        name: librespeed_data
