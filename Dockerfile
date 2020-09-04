@@ -4,7 +4,7 @@ FROM golang:1.14.4-alpine3.12 AS buildenv
 WORKDIR /librespeed
 COPY entrypoint.sh /librespeed/entrypoint.sh
 RUN apk add --no-cache tar \
-    && wget -O - https://github.com/librespeed/speedtest/tarball/go \
+    && wget -O - https://github.com/librespeed/speedtest-go/tarball/master \
     | tar -xz --strip 1 \
     && CGO_ENABLED=0 go build -ldflags "-w -s" -trimpath -o speedtest main.go
 
