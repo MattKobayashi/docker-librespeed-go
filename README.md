@@ -1,4 +1,4 @@
-# LibreSpeed-Go
+# docker-librespeed-go
 The [Go implementation of LibreSpeed](https://github.com/librespeed/speedtest/tree/go) in a Docker image.
 
 ## Docker-Compose Example
@@ -7,7 +7,7 @@ version: 2.4
 services:
 
   librespeed:
-    image: "ingenieurmt/librespeed-go:latest"
+    image: "ingenieurmt/docker-librespeed-go:latest"
     container_name: librespeed
     hostname: speedtest
     domainname: example.com
