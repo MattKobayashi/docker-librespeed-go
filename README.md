@@ -1,5 +1,5 @@
 # docker-librespeed-go
-The [Go implementation of LibreSpeed](https://github.com/librespeed/speedtest/tree/go) in a Docker image.
+The [Go implementation of LibreSpeed](https://github.com/librespeed/speedtest-go) in a Docker image.
 
 ## Docker-Compose Example
 ```
