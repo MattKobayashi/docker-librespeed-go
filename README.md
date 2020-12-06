@@ -1,8 +1,10 @@
 # docker-librespeed-go
+
 The [Go implementation of LibreSpeed](https://github.com/librespeed/speedtest-go) in a Docker image.
 
 ## Docker-Compose Example
-```
+
+```Dockerfile
 version: 2.4
 services:
 
@@ -26,7 +28,8 @@ services:
 ```
 
 ## Configurable Environment Variables
-```
+
+```Formatted
 TITLE      - The title displayed on the LibreSpeed web page and title bar (default is "LibreSpeed Example").
 BINDADDR   - The IP address that LibreSpeed will bind to (optional, recommended to leave blank for Docker).
 LISTENPORT - The port that LibreSpeed will bind to (default is 8989).
