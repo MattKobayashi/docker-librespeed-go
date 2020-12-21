@@ -3,7 +3,8 @@ FROM golang:1.14.4-alpine3.12 AS buildenv
 # Copy/grab files and compile
 WORKDIR /librespeed
 COPY entrypoint.sh /librespeed/entrypoint.sh
-RUN apk add --no-cache tar \
+RUN apk --no-cache upgrade \
+    && apk add --no-cache tar \
     && wget -O - https://github.com/librespeed/speedtest-go/archive/v1.1.2.tar.gz \
     | tar -xz --strip 1 \
     && CGO_ENABLED=0 go build -ldflags "-w -s" -trimpath -o speedtest main.go
