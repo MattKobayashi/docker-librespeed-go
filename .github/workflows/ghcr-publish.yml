@@ -1,10 +1,5 @@
 name: Publish to GHCR.io
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 on:
 #  schedule:
 #    - cron: '17 5 * * *'
@@ -18,8 +13,6 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:
@@ -31,6 +24,12 @@ jobs:
       packages: write
 
     steps:
+      # Create a lowercase version of the repository name
+      # (needed to push to GHCR.io)
+      - name: Lowercase repository name
+        run: |
+          echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -51,4 +50,4 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ github.event.repository.name }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
