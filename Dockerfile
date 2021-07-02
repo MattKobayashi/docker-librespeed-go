@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine3.13 AS buildenv
+FROM golang:1.16-alpine3.14 AS buildenv
 
 # Copy/grab files and compile
 WORKDIR /librespeed
@@ -10,7 +10,7 @@ RUN apk --no-cache upgrade \
     && CGO_ENABLED=0 go build -ldflags "-w -s" -trimpath -o speedtest main.go
 
 # Copy compiled binary and supporting files to main image
-FROM alpine:3.13
+FROM alpine:3.14
 WORKDIR /opt/librespeed
 RUN adduser --system librespeed \
     && mkdir assets/ \
@@ -42,4 +42,4 @@ VOLUME ["/opt/librespeed/data"]
 EXPOSE 8989
 ENTRYPOINT ["./entrypoint.sh"]
 
-LABEL maintainer="matthew@thompsons.id.au"
+LABEL maintainer="matthew@kobayashi.com.au"
