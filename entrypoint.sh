@@ -37,6 +37,9 @@ fi
 # Set ipinfo.io API key (if applicable)
 echo -e "ipinfo_api_key=\"$IPINFOKEY\"\n" >> settings.toml
 
+# Set assets directory path
+echo -e "assets_path=\"./assets\"\n" >> settings.toml
+
 # Set password for logging into statistics page
 if [ -z "$STATSPASS" ]; then
   echo -e "statistics_password=\"PASSWORD\"\n" >> settings.toml
