@@ -2,7 +2,7 @@
 
 The [Go implementation of LibreSpeed](https://github.com/librespeed/speedtest-go) in a Docker image.
 
-## Docker-Compose Example
+## Docker-Compose example
 
 ```Dockerfile
 version: 2.4
@@ -27,14 +27,17 @@ services:
       - "8989:8989/tcp"
 ```
 
-## Configurable Environment Variables
+## Configurable environment variables
 
 ```Formatted
-TITLE      - The title displayed on the LibreSpeed web page and title bar (default is "LibreSpeed Example").
-BINDADDR   - The IP address that LibreSpeed will bind to (optional, recommended to leave blank for Docker).
-LISTENPORT - The port that LibreSpeed will bind to (default is 8989).
-SERVERLAT  - The latitude of the server expressed as a signed float (e.g. -27.4698).
-SERVERLNG  - The longitude of the server expressed as a signed float (e.g. 153.0251).
-IPINFOKEY  - Your API key for ipinfo.io (optional, recommended if expecting a large number of tests).
-STATSPASS  - The password you wish to set for access to /stats/ (result records). If left blank, /stats/ will be disabled.
-REDACTIP   - When set to true with telemetry enabled, IP addresses and hostnames are redacted from the collected telemetry, for better privacy (default is false).
+TITLE          - The title displayed as the LibreSpeed title bar (default is "LibreSpeed Example").
+SERVERFQDN     - The FQDN of the server (optional, allows you to display true server location).
+SERVERLOCATION - The true location of the server (optional, requires SERVERFQDN to be set).
+BINDADDR       - The IP address that LibreSpeed will bind to (optional, recommended to leave blank for Docker).
+LISTENPORT     - The port that LibreSpeed will bind to (default is 8989).
+SERVERLAT      - The latitude of the server expressed as a signed float (e.g. -27.4698).
+SERVERLNG      - The longitude of the server expressed as a signed float (e.g. 153.0251).
+IPINFOKEY      - Your API key for ipinfo.io (optional, recommended if expecting a large number of tests).
+STATSPASS      - The password you wish to set for access to /stats/ (result records). If left blank, /stats/ will be disabled.
+REDACTIP       - When set to true with telemetry enabled, IP addresses and hostnames are redacted from the collected telemetry, for better privacy (default is false).
+```

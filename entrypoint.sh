@@ -1,6 +1,21 @@
 #!/bin/sh
 set -xe
 
+# Set title
+if [ ! -z "$TITLE" ]; then
+  sed -i "s/LibreSpeed Example/$TITLE/g" ./assets/index.html
+fi
+
+# Set server FQDN
+if [ ! -z "$SERVERFQDN" ]; then
+  sed -i "s/contoso.com/$SERVERFQDN/g" ./assets/index.html
+fi
+
+# Set server's true location
+if [ ! -z "$SERVERLOCATION" ]; then
+  sed -i "s/Contoso Example/$SERVERLOCATION/g" ./assets/index.html
+fi
+
 # Set bind address and port
 echo -e "bind_address=\"$BINDADDR\"\n" > settings.toml
 echo -e "listen_port=\"$LISTENPORT\"\n" >> settings.toml

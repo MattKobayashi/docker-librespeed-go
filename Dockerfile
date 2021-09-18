@@ -19,6 +19,7 @@ RUN adduser --system librespeed \
     && touch settings.toml
 COPY --from=buildenv --chown=librespeed:nogroup /librespeed/speedtest /opt/librespeed/
 COPY --from=buildenv --chown=librespeed:nogroup /librespeed/entrypoint.sh /opt/librespeed/
+COPY --chown=librespeed:nogroup ./assets/* /opt/librespeed/assets/
 RUN chmod +x entrypoint.sh \
     && chmod +x speedtest \
     && chown -R librespeed /opt/librespeed/
