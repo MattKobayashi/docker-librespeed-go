@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine3.14 AS buildenv
+FROM golang:1.17-alpine3.14 AS buildenv
 
 # Copy/grab files and compile
 WORKDIR /librespeed
@@ -13,11 +13,11 @@ RUN apk --no-cache upgrade \
 FROM alpine:3.14
 WORKDIR /opt/librespeed
 RUN adduser --system librespeed \
+    && apk --no-cache upgrade \
     && mkdir assets/ \
     && mkdir data/ \
     && touch settings.toml
 COPY --from=buildenv --chown=librespeed:nogroup /librespeed/speedtest /opt/librespeed/
-COPY --from=buildenv --chown=librespeed:nogroup /librespeed/assets/* /opt/librespeed/assets/
 COPY --from=buildenv --chown=librespeed:nogroup /librespeed/entrypoint.sh /opt/librespeed/
 RUN chmod +x entrypoint.sh \
     && chmod +x speedtest \

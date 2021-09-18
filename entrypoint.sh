@@ -1,19 +1,6 @@
 #!/bin/sh
 set -xe
 
-# Select index.html page
-cp assets/example-singleServer-progressBar.html assets/index.html
-
-# Enable telemetry
-if [ ! $(grep -q "telemetry_level" ./assets/index.html) ]; then
-  sed -i "s/<\/script>/s.setParameter(\"telemetry_level\",\"basic\");\n<\/script>/" ./assets/index.html
-fi
-
-# Set title
-if [ ! -z "$TITLE" ]; then
-  sed -i "s/LibreSpeed Example/$TITLE/g" ./assets/index.html
-fi
-
 # Set bind address and port
 echo -e "bind_address=\"$BINDADDR\"\n" > settings.toml
 echo -e "listen_port=\"$LISTENPORT\"\n" >> settings.toml
